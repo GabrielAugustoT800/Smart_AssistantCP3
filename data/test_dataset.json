@@ -1,0 +1,92 @@
+[
+    {
+        "texto": "Estou com dor no peito há 30 minutos e falta de ar",
+        "tipo_esperado": "emergencia",
+        "urgencia_esperada": "alta",
+        "palavras_chave": ["SAMU", "192", "emergência"]
+    },
+    {
+        "texto": "Meu filho de 3 anos está convulsionando",
+        "tipo_esperado": "emergencia",
+        "urgencia_esperada": "alta",
+        "palavras_chave": ["SAMU", "192", "emergência"]
+    },
+    {
+        "texto": "Tomei um remédio errado agora há pouco, o que faço?",
+        "tipo_esperado": "emergencia",
+        "urgencia_esperada": "alta",
+        "palavras_chave": ["CVS", "0800", "intoxicação"]
+    },
+    {
+        "texto": "Estou com febre de 38 graus há dois dias",
+        "tipo_esperado": "consulta",
+        "urgencia_esperada": "media",
+        "palavras_chave": ["médico", "clínico"]
+    },
+    {
+        "texto": "Tenho sentido dores de cabeça frequentes toda semana",
+        "tipo_esperado": "consulta",
+        "urgencia_esperada": "media",
+        "palavras_chave": ["neurologista", "médico"]
+    },
+    {
+        "texto": "Estou com manchas vermelhas no braço há três dias",
+        "tipo_esperado": "consulta",
+        "urgencia_esperada": "media",
+        "palavras_chave": ["dermatologista", "médico"]
+    },
+    {
+        "texto": "Sinto dores nas costas ao me levantar toda manhã",
+        "tipo_esperado": "consulta",
+        "urgencia_esperada": "baixa",
+        "palavras_chave": ["ortopedista", "médico"]
+    },
+    {
+        "texto": "O que é diabetes tipo 2?",
+        "tipo_esperado": "informacao",
+        "urgencia_esperada": "baixa",
+        "palavras_chave": ["insulina", "glicose"]
+    },
+    {
+        "texto": "Qual a diferença entre gripe e resfriado?",
+        "tipo_esperado": "informacao",
+        "urgencia_esperada": "baixa",
+        "palavras_chave": ["vírus", "sintomas"]
+    },
+    {
+        "texto": "Como funciona a vacina contra dengue?",
+        "tipo_esperado": "informacao",
+        "urgencia_esperada": "baixa",
+        "palavras_chave": ["vacina", "dengue"]
+    },
+    {
+        "texto": "O que é hipertensão arterial?",
+        "tipo_esperado": "informacao",
+        "urgencia_esperada": "baixa",
+        "palavras_chave": ["pressão", "sangue"]
+    },
+    {
+        "texto": "Para que serve o omeprazol?",
+        "tipo_esperado": "medicamento",
+        "urgencia_esperada": "baixa",
+        "palavras_chave": ["estômago", "ácido"]
+    },
+    {
+        "texto": "Posso tomar ibuprofeno com paracetamol?",
+        "tipo_esperado": "medicamento",
+        "urgencia_esperada": "media",
+        "palavras_chave": ["interação", "médico"]
+    },
+    {
+        "texto": "Quais são os efeitos colaterais da amoxicilina?",
+        "tipo_esperado": "medicamento",
+        "urgencia_esperada": "baixa",
+        "palavras_chave": ["alergia", "efeito"]
+    },
+    {
+        "texto": "Minha pressão está 150x90, isso é perigoso?",
+        "tipo_esperado": "consulta",
+        "urgencia_esperada": "media",
+        "palavras_chave": ["cardiologista", "pressão"]
+    }
+]
