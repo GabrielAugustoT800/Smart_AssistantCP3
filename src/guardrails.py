@@ -6,6 +6,7 @@ class GuardrailSystem:
         self.max_chars = 500
         self.caracteres_proibidos = ['<', '>', '{', '}']
         self.padroes_injection = [
+            # Padrões em Inglês
             r'ignore\s+(all\s+)?(previous|prior|above)\s+instructions?',
             r'forget\s+(all\s+)?(previous|prior|above|your)\s+(instructions?|rules?|context)',
             r'you\s+are\s+now\s+',
@@ -16,6 +17,17 @@ class GuardrailSystem:
             r'ignore\s+(your\s+)?(rules?|guidelines?|restrictions?)',
             r'pretend\s+(you\s+are|to\s+be)',
             r'disable\s+(your\s+)?(safety|filters?|restrictions?)',
+            # Padrões em Português
+            r'ignore\s+(todas?\s+)?(as\s+)?(instruções|regras)',
+            r'esqueça\s+(todas?\s+)?(as\s+)?(instruções|regras|contexto)',
+            r'você\s+agora\s+é',
+            r'finja\s+(ser|que\s+é)',
+            r'revele\s+(seu\s+)?prompt',
+            r'aja\s+como\s+(se\s+você\s+fosse|um)',
+            r'desative\s+(suas?\s+)?(restrições|filtros|regras)',
+            r'sem\s+(restrições|limitações|regras)',
+            r'pretenda\s+(ser|que\s+é)',
+            r'jailbreak',
         ]
 
     
