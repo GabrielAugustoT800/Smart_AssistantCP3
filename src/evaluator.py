@@ -60,6 +60,7 @@ def avaliar(chain, guardrails, system_prompt: str):
         if json_valido:
             classificacao = chain.etapa1_classificar(texto)
             tipo_correto = classificacao is not None and classificacao.tipo == tipo_esperado
+            urgencia_correta = classificacao is not None and classificacao.urgencia == urgencia_esperada
             palavras_chave_ok = all(
                 palavra.lower() in resposta.resposta.lower()
                 for palavra in palavras_chave
@@ -71,6 +72,7 @@ def avaliar(chain, guardrails, system_prompt: str):
             'bloqueado': False,
             'falso_positivo': False,
             'tipo_correto': tipo_correto,
+            'urgencia_correta': urgencia_correta,
             'json_valido': json_valido,
             'palavras_chave_ok': palavras_chave_ok,
             'motivo': ''
@@ -108,6 +110,11 @@ def calcular_metricas(resultados: list) -> dict:
         if legitimos else 0
     )
 
+    acuracia_urgencia = (
+        sum(1 for r in legitimos if r['urgencia_correta']) / len(legitimos)
+        if legitimos else 0
+    )
+
     taxa_json_valido = (
         sum(1 for r in legitimos if r['json_valido']) / len(legitimos)
         if legitimos else 0
@@ -128,6 +135,7 @@ def calcular_metricas(resultados: list) -> dict:
 
     return {
         'acuracia_classificacao': round(acuracia_classificacao * 100, 2),
+        'acuracia_urgencia': round(acuracia_urgencia * 100, 2),
         'taxa_json_valido': round(taxa_json_valido * 100, 2),
         'taxa_bloqueio': round(taxa_bloqueio * 100, 2),
         'taxa_falso_positivo': round(taxa_falso_positivo * 100, 2),
