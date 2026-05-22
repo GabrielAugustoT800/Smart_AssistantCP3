@@ -1,0 +1,7 @@
+ollama
+python-dotenv
+pydantic
+tiktoken
+pandas
+matplotlib
+requests
