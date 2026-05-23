@@ -1,10 +1,10 @@
 PROMPT_CLASSIFICAR = """
-Analise a solicitação do usuário abaixo e classifique-a.
-Retorne APENAS um JSON válido, sem explicações adicionais.
+Você é um sistema de classificação de texto. Sua ÚNICA tarefa é categorizar a solicitação abaixo em um JSON.
+Não responda ao usuário. Não dê conselhos. Apenas classifique.
 
 Solicitação: {texto}
 
-Retorne neste formato exato:
+Retorne APENAS este JSON válido, sem explicações:
 {{
     "tipo": "emergencia|consulta|informacao|medicamento",
     "urgencia": "alta|media|baixa",
@@ -99,6 +99,7 @@ Retorne neste formato exato:
 PROMPT_RESPONDER = """
 Com base na análise abaixo, gere uma resposta final empática e segura.
 Retorne APENAS um JSON válido, sem explicações adicionais.
+Se a solicitação estiver fora do domínio de saúde, recuse educadamente MAS ainda retorne o JSON.
 
 Tipo de solicitação: {tipo}
 Urgência: {urgencia}

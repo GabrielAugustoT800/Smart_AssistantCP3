@@ -17,8 +17,8 @@ class AssistantChain:
         self.system_prompt = system_prompt
 
     def _parse_json(self, texto: str) -> dict:
+        # print(f"DEBUG resposta bruta: {texto}")  -> linha temporária, serve para debug e análise da resposta bruta do algoritmo
         try:
-            # Remove possíveis markdown code blocks
             texto = texto.strip()
             if texto.startswith("```"):
                 texto = texto.split("```")[1]
@@ -31,7 +31,7 @@ class AssistantChain:
     
     def etapa1_classificar(self, texto_usuario: str) -> ClassificacaoSchema | None:
         prompt = PROMPT_CLASSIFICAR.format(texto=texto_usuario)
-        resultado = self.llm.chat(prompt=prompt, system=self.system_prompt)
+        resultado = self.llm.chat(prompt=prompt, system='')
 
         if 'erro' in resultado:
             print(f"Erro na etapa 1: {resultado['erro']}")
@@ -64,7 +64,7 @@ class AssistantChain:
             urgencia=classificacao.urgencia
         )
 
-        resultado = self.llm.chat(prompt=prompt, system=self.system_prompt)
+        resultado = self.llm.chat(prompt=prompt, system='')
 
         if 'erro' in resultado:
             print(f"Erro na etapa 2: {resultado['erro']}")
@@ -86,7 +86,7 @@ class AssistantChain:
             urgencia=classificacao.urgencia
         )
 
-        resultado = self.llm.chat(prompt=prompt, system=self.system_prompt)
+        resultado = self.llm.chat(prompt=prompt, system=self.system_prompt, max_tokens= 1000)
 
         if 'erro' in resultado:
             print(f"Erro na etapa 3: {resultado['erro']}")

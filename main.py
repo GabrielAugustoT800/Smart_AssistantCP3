@@ -1,13 +1,16 @@
 import sys
+from pathlib import Path
 from dotenv import load_dotenv
 from src.chain import AssistantChain
 from src.guardrails import GuardrailSystem
-from src.evaluator import avaliar, calcular_metricas, gerar_relatorio
+from src.evaluator import avaliar, calcular_metricas, gerar_relatorio, avaliar_versoes
 
 load_dotenv()
 
+BASE_DIR = Path(__file__).parent
+
 def carregar_system_prompt() -> str:
-    with open('prompts/system_prompt.txt', 'r', encoding= 'utf-8') as f:
+    with open(BASE_DIR/'prompts'/'system_prompt.txt', 'r', encoding= 'utf-8') as f:
         return f.read()
     
 def modo_interativo(chain: AssistantChain, guardrails: GuardrailSystem):
@@ -43,14 +46,15 @@ def modo_interativo(chain: AssistantChain, guardrails: GuardrailSystem):
         print(f"\n🤖 Dr. Ivan: {resposta.resposta}")
         print(f"💡 Ação sugerida: {resposta.acao_sugerida}")
         if resposta.disclaimer:
-            print(f"⚠️  {resposta.disclaimer}")
+            print(f"  {resposta.disclaimer}")
             print(f" Confiança: {resposta.confianca}\n")
 
 def modo_avaliacao(chain: AssistantChain, guardrails: GuardrailSystem, system_prompt: str):
     print("\n📊 Iniciando modo de avaliação...")
     resultados = avaliar(chain, guardrails, system_prompt)
-    metricas = calcular_metricas(resultados)
-    gerar_relatorio(resultados, metricas)
+    metricas = calcular_metricas(resultados, chain)
+    metricas_por_versao = avaliar_versoes(chain, guardrails)
+    gerar_relatorio(resultados, metricas, metricas_por_versao)
     print("\n✅ Avaliação concluída.")
 
 def main():
